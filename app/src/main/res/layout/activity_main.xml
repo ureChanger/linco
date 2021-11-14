@@ -1,18 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:orientation="vertical">
 
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:padding="20dp">
+
+        <ImageButton
+            android:id="@+id/btn_posting"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="12dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="글쓰기 버튼"
+            android:scaleType="fitCenter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/img_btn_posting" />
+
+        <ImageButton
+            android:id="@+id/btn_mypage"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="12dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="마이페이지 버튼"
+            android:scaleType="fitCenter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/img_btn_mypage" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="안녕하세요, "
+            android:textColor="#272748"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/btn_posting"
+            app:layout_constraintTop_toBottomOf="@+id/btn_posting" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="홍길동님"
+            android:textColor="#272748"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="@+id/textView" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="오늘도 성공적인 공동구매하세요!"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <HorizontalScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        android:scrollbars="none">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <LinearLayout
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"/>
+            <ImageButton
+                android:id="@+id/imageButton4"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_main_slider"
+                app:srcCompat="@drawable/resize_btn_heart" />
+
+            <android.widget.Button
+                android:id="@+id/button6"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_marginLeft="10dp"
+                android:backgroundTint="@null"
+                android:background="@drawable/btn_main_slider"
+                android:text="내 모집글"
+                android:textColor="@color/linco_black"
+                android:textSize="14sp"
+                tools:layout_editor_absoluteX="20dp"
+                tools:layout_editor_absoluteY="222dp" />
+
+            <android.widget.Button
+                android:id="@+id/button7"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/btn_main_slider"
+                android:text="AI 추천"
+                android:textColor="@color/linco_black"
+                android:textSize="14sp"
+                tools:layout_editor_absoluteX="88dp"
+                tools:layout_editor_absoluteY="261dp" />
+
+            <android.widget.Button
+                android:id="@+id/button8"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/btn_main_slider"
+                android:text="최신순"
+                android:textColor="@color/linco_black"
+                android:textSize="14sp"
+                tools:layout_editor_absoluteX="174dp"
+                tools:layout_editor_absoluteY="293dp" />
+
+            <android.widget.Button
+                android:id="@+id/button10"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/btn_main_slider"
+                android:text="카테고리"
+                android:textColor="@color/linco_black"
+                android:textSize="14sp"
+                tools:layout_editor_absoluteX="301dp"
+                tools:layout_editor_absoluteY="457dp" />
+            <LinearLayout
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="10dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        >
+
+            <GridView
+                android:id="@+id/gridView_thumbnail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:horizontalSpacing="10dp"
+                android:numColumns="auto_fit"
+                android:scrollbars="none"
+                android:verticalSpacing="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+     </ScrollView>
+
+</LinearLayout>
