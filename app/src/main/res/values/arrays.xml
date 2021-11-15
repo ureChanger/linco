@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="filter">
+        <item>캠핑</item>
+        <item>육아</item>
+        <item>게임</item>
+        <item>시계</item>
+        <item>패션</item>
+    </string-array>
+    <string-array name="writer">
+        <item>나</item>
+        <item>타인</item>
+    </string-array>
+</resources>
