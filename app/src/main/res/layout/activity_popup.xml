@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#eeee"
+    android:orientation="vertical"
+    android:layout_width="330dp"
+    android:layout_height="342dp">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="@string/text3"
+            android:textSize="20sp"
+            android:textColor="#fff"
+            android:gravity="center"
+            android:background="#6D71F9"
+            android:layout_width="match_parent"
+            android:layout_height="70dp" />
+    </LinearLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TableRow>
+
+            <CheckBox
+                android:layout_width="80dp"
+                android:layout_height="48dp"
+                android:layout_margin="10dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="13dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                android:text="@string/btn3"
+                android:textColor="#000000"
+                android:textSize="15sp" />
+
+            <CheckBox
+                android:layout_width="80dp"
+                android:layout_height="48dp"
+                android:layout_margin="10dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                android:text="@string/btn4"
+                android:textColor="#000000"
+                android:textSize="15sp" />
+
+            <CheckBox
+                android:layout_width="80dp"
+                android:layout_height="48dp"
+                android:layout_margin="10dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                android:text="@string/btn5"
+                android:textColor="#000000"
+                android:textSize="15sp" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <CheckBox
+                android:layout_width="80dp"
+                android:layout_height="48dp"
+                android:layout_margin="10dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                android:text="@string/btn6"
+                android:textColor="#000000"
+                android:textSize="15sp" />
+
+            <CheckBox
+                android:layout_width="80dp"
+                android:layout_height="48dp"
+                android:layout_margin="10dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                android:text="@string/btn7"
+                android:textColor="#000000"
+                android:textSize="15sp" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_margin="10dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:paddingRight="13dp"
+                android:paddingBottom="10dp"
+                android:text="@string/btn8"
+                android:textColor="#000000"
+                android:textSize="15sp" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <CheckBox
+                android:layout_width="80dp"
+                android:layout_height="48dp"
+                android:layout_margin="10dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                android:text="@string/btn9"
+                android:textColor="#000000"
+                android:textSize="15sp" />
+
+            <CheckBox
+                android:layout_width="80dp"
+                android:layout_height="48dp"
+                android:layout_margin="10dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                android:text="@string/btn10"
+                android:textColor="#000000"
+                android:textSize="15sp" />
+
+            <CheckBox
+                android:layout_width="80dp"
+                android:layout_height="48dp"
+                android:layout_margin="10dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                android:text="@string/btn11"
+                android:textColor="#000000"
+                android:textSize="15sp" />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <View
+        android:background="#66bdbdbd"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:text="@string/btn12"
+            android:textSize="20sp"
+            android:textColor="#6D71F9"
+            android:padding="16dp"
+            android:gravity="center"
+            android:background="#00000000"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:onClick="mOnClose"/>
+    </LinearLayout>
+
+</LinearLayout>

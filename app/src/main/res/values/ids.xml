@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="btn3" type="id">캠핑</item>
+    <item name="btn4" type="id">게임</item>
+    <item name="btn5" type="id">패션</item>
+    <item name="btn6" type="id">육아</item>
+    <item name="btn7" type="id">시계</item>
+    <item name="btn8" type="id">전자기기</item>
+    <item name="btn9" type="id">도서</item>
+    <item name="btn10" type="id">요리</item>
+    <item name="btn11" type="id">뷰티</item>
+    <item name="btn12" type="id">확인</item>
+</resources>
