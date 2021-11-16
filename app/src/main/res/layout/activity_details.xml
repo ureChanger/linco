@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.univ.linco.DetailsActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="200px"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/back_btn"
+            android:layout_width="50px"
+            android:layout_height="50px"
+            android:layout_marginLeft="32px"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@drawable/backbutton"/>
+
+        <ImageView
+            android:id="@+id/user_btn"
+            android:layout_width="70px"
+            android:layout_height="70px"
+            android:background="@drawable/profileuser"
+            android:layout_marginRight="46px"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <ScrollView
+        android:scrollbars="vertical"
+        android:scrollbarFadeDuration="0"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="80dp"
+        app:layout_constraintTop_toBottomOf="@+id/tab_layout"
+        app:layout_constraintBottom_toBottomOf="@+id/posting_btn2">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/gallary_image"
+                android:layout_width="match_parent"
+                android:layout_height="520px"
+                android:background="#f3f3f3f3"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/title_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
+                android:textSize="30sp"
+                android:textColor="#272748"
+                android:text="감성 캠핑의 시작, 접이식 원목 테이블"
+                app:layout_constraintTop_toBottomOf="@+id/gallary_image" />
+
+            <HorizontalScrollView
+                android:id="@+id/tag_scrollview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/title_text"
+                app:layout_constraintLeft_toLeftOf="@+id/seekbar_layout">
+                <LinearLayout
+                    android:id="@+id/tag_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="36px"
+                    android:orientation="horizontal"
+                    android:scrollbars="horizontal"
+                    />
+            </HorizontalScrollView>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/seekbar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26px"
+                android:layout_marginHorizontal="36px"
+                android:layout_marginBottom="26px"
+                app:layout_constraintTop_toBottomOf="@+id/tag_scrollview">
+                <SeekBar
+                    android:id="@+id/seekbar"
+                    android:layout_width="match_parent"
+                    android:max="10"
+                    android:progress="6"
+                    android:thumb="@android:color/transparent"
+                    android:layout_height="30px"
+                    android:layout_marginTop="24px"
+                    android:layout_marginBottom="12px"
+                    android:progressDrawable="@drawable/seekbar"
+                    app:layout_constraintTop_toTopOf="parent"/>
+                <TextView
+                    android:id="@+id/seekbar_progress_text1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50px"
+                    android:text="4명의 참여자가 필요해요!"
+                    app:layout_constraintTop_toBottomOf="@+id/seekbar"
+                    app:layout_constraintLeft_toLeftOf="@+id/seekbar"/>
+                <TextView
+                    android:id="@+id/seekbar_progress_text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50px"
+                    android:text="(6/10)"
+                    app:layout_constraintTop_toBottomOf="@+id/seekbar"
+                    app:layout_constraintRight_toRightOf="@+id/seekbar"/>
+
+                <TextView
+                    android:id="@+id/seekbar_progress_per_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="60%"
+                    android:textColor="#272748"
+                    android:textSize="60sp"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toBottomOf="@+id/seekbar_progress_text1"
+                    app:layout_constraintLeft_toLeftOf="parent"/>
+
+                <TextView
+                    android:id="@+id/seekbar_process_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80px"
+                    android:text="진행중"
+                    android:textStyle="bold"
+                    android:textColor="#272748"
+                    android:textSize="20sp"
+                    app:layout_constraintTop_toTopOf="@+id/seekbar_progress_per_tv"
+                    app:layout_constraintBottom_toBottomOf="@+id/seekbar_progress_per_tv"
+                    app:layout_constraintRight_toRightOf="@+id/seekbar"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/main_text"
+                android:layout_width="match_parent"
+                android:layout_height="700px"
+                android:layout_marginTop="80px"
+                android:layout_marginBottom="100dp"
+                android:background="#eff0f8"
+                android:padding="36px"
+                android:textSize="20sp"
+                app:layout_constraintTop_toBottomOf="@+id/seekbar_layout" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/posting_btn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/postingbutton2"
+        android:layout_marginTop="80px"
+        android:layout_marginRight="66px"
+        android:layout_marginBottom="40px"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/emargency_btn"/>
+
+    <ImageButton
+        android:id="@+id/emargency_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_background1"
+        android:src="@drawable/emargencyicon"
+        android:layout_marginRight="66px"
+        app:layout_constraintTop_toTopOf="@+id/posting_btn2"
+        app:layout_constraintBottom_toBottomOf="@+id/posting_btn2"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
