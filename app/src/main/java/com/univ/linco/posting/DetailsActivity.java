@@ -1,16 +1,13 @@
-package com.univ.linco;
+package com.univ.linco.posting;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -22,9 +19,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import com.univ.linco.MainActivity;
+import com.univ.linco.R;
 import com.univ.linco.mypage.MypageActivity;
-
-import org.w3c.dom.Text;
+import com.univ.linco.posting.PostingData;
 
 public class DetailsActivity extends AppCompatActivity {
 
@@ -51,12 +49,12 @@ public class DetailsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         data = (PostingData) intent.getSerializableExtra("data");
 
-        Log.d("kdm" , "imageuri  : " + data.imageUrl );
-        Log.d("kdm" , "title  : " + data.title );
-        Log.d("kdm" , "keyword  : " + data.keyword );
-        Log.d("kdm" , "num  : " + data.num );
-        Log.d("kdm" , "url  : " + data.url );
-        Log.d("kdm" , "main  : " + data.main );
+        Log.d("kdm" , "imageuri  : " + data.getImageUrl() );
+        Log.d("kdm" , "title  : " + data.getTitle() );
+        Log.d("kdm" , "keyword  : " + data.getKeyword() );
+        Log.d("kdm" , "num  : " + data.getNum() );
+        Log.d("kdm" , "url  : " + data.getUrl() );
+        Log.d("kdm" , "main  : " + data.getMain() );
 
         gallaryImage = findViewById(R.id.gallary_image);
         titleTv = findViewById(R.id.title_text);
@@ -85,8 +83,8 @@ public class DetailsActivity extends AppCompatActivity {
             }
         });
 
-        max = data.num;
-        url = data.url;
+        max = data.getNum();
+        url = data.getUrl();
         seekBar1 = findViewById(R.id.seekbar);
         seekBar1.setPadding(0, 0, 0, 0);
         tagLayout = findViewById(R.id.tag_layout);
@@ -110,11 +108,11 @@ public class DetailsActivity extends AppCompatActivity {
 
 
 
-        gallaryImage.setImageURI(Uri.parse(data.imageUrl));
-        titleTv.setText(data.title);
-        mainTv.setText(data.main);
+        gallaryImage.setImageURI(Uri.parse(data.getImageUrl()));
+        titleTv.setText(data.getTitle());
+        mainTv.setText(data.getMain());
         setSeekbarUi();
-        setTagView(getTagString(data.keyword));
+        setTagView(getTagString(data.getKeyword()));
     }
 
     private void setSeekbarUi(){

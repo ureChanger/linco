@@ -1,4 +1,4 @@
-package com.univ.linco;
+package com.univ.linco.posting;
 
 import android.net.Uri;
 import android.os.Parcelable;
