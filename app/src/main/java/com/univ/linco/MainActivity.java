@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageButton;
 
+import com.univ.linco.mypage.MypageActivity;
 import com.univ.linco.thumbnail.ThumbnailAdapter;
 import com.univ.linco.thumbnail.ThumbnailData;
 import com.univ.linco.thumbnail.ThumbnailItem;
@@ -35,14 +37,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 //                intent = new Intent(getApplicationContext(), PostingActivity.class);
-                startActivity(intent);
+//                startActivity(intent);
+                Log.i("123", "글쓰기");
             }
         });
 
         btn_mypage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                intent = new Intent(getApplicationContext(), MypageActivity.class);
+                Log.d("123", "마이페이지");
+                intent = new Intent(getApplicationContext(), MypageActivity.class);
                 startActivity(intent);
             }
         });
