@@ -26,13 +26,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".PostingActivity"
+            android:name=".posting.PostingActivity"
             android:exported="true" />
         <activity
             android:name=".mypage.MypageActivity"
             android:exported="true" />
         <activity
-            android:name=".DetailsActivity"
+            android:name=".posting.DetailsActivity"
             android:exported="true" />
     </application>
 

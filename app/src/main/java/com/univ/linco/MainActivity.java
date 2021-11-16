@@ -4,12 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageButton;
 
 import com.univ.linco.mypage.MypageActivity;
+import com.univ.linco.posting.PostingActivity;
 import com.univ.linco.thumbnail.ThumbnailAdapter;
 import com.univ.linco.thumbnail.ThumbnailData;
 import com.univ.linco.thumbnail.ThumbnailItem;
