@@ -36,16 +36,14 @@ public class MainActivity extends AppCompatActivity {
         btn_posting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                intent = new Intent(getApplicationContext(), PostingActivity.class);
-//                startActivity(intent);
-                Log.i("123", "글쓰기");
+                intent = new Intent(getApplicationContext(), PostingActivity.class);
+                startActivity(intent);
             }
         });
 
         btn_mypage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("123", "마이페이지");
                 intent = new Intent(getApplicationContext(), MypageActivity.class);
                 startActivity(intent);
             }
