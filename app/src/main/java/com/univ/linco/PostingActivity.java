@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.demo.linco.R;
+import com.univ.linco.mypage.MypageActivity;
 
 public class PostingActivity extends AppCompatActivity {
 
@@ -45,7 +45,7 @@ public class PostingActivity extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(this , MainActivity.class);
+                Intent intent = new Intent(getApplicationContext() , MainActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -54,7 +54,7 @@ public class PostingActivity extends AppCompatActivity {
         userBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(this , MypageActivity.class);
+                Intent intent = new Intent(getApplicationContext() , MypageActivity.class);
                 startActivity(intent);
                 finish();
             }

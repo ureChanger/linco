@@ -21,7 +21,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.demo.linco.R;
+
+import com.univ.linco.mypage.MypageActivity;
 
 import org.w3c.dom.Text;
 
@@ -69,7 +70,7 @@ public class DetailsActivity extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(this , MainActivity.class);
+                Intent intent = new Intent(getApplicationContext() , MainActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -78,7 +79,7 @@ public class DetailsActivity extends AppCompatActivity {
         userBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(this , MypageActivity.class);
+                Intent intent = new Intent(getApplicationContext() , MypageActivity.class);
                 startActivity(intent);
                 finish();
             }

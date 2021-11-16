@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
         btn_posting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                intent = new Intent(getApplicationContext(), PostingActivity.class);
-//                startActivity(intent);
+                intent = new Intent(getApplicationContext(), PostingActivity.class);
+                startActivity(intent);
             }
         });
 
