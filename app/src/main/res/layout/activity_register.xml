@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#6D71F9"
+    tools:context=".signup.RegisterActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="#6D71F9"
+        android:orientation="horizontal"
+        android:paddingStart="265dp"
+        android:paddingEnd="10dp">
+
+        <ImageView
+            android:id="@+id/hashtag"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginStart="50dp"
+            android:src="@drawable/img_keyword_register"
+            android:contentDescription="@string/todo2"
+            android:onClick="mOnPopupClick"
+            tools:ignore="OnClick" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1100dp"
+        android:layout_weight="1"
+        android:background="@drawable/layout_round"
+        android:orientation="vertical"
+        android:paddingTop="40dp"
+        android:paddingRight="55dp"
+        android:paddingLeft="55dp">
+
+        <EditText
+            android:id="@+id/user_name"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edit_round"
+            android:elevation="3dp"
+            android:ems="10"
+            android:hint="@string/edit3"
+            android:textColor="#757575"
+            android:inputType="textPersonName"
+            android:paddingStart="10dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            tools:ignore="RtlSymmetry" />
+
+        <EditText
+            android:id="@+id/user_reg_id"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/edit_round"
+            android:elevation="3dp"
+            android:ems="10"
+            android:hint="@string/edit4"
+            android:textColor="#757575"
+            android:inputType="textPersonName"
+            android:paddingStart="10dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            tools:ignore="RtlSymmetry" />
+
+        <EditText
+            android:id="@+id/user_reg_pw"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_round"
+            android:elevation="3dp"
+            android:ems="10"
+            android:hint="@string/edit5"
+            android:inputType="textPassword"
+            android:paddingStart="10dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:layout_marginTop="30dp"
+            tools:ignore="RtlSymmetry" />
+
+        <EditText
+            android:id="@+id/user_reg_pwc"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/edit_round"
+            android:elevation="3dp"
+            android:ems="10"
+            android:hint="@string/edit6"
+            android:textColor="#757575"
+            android:inputType="textPassword"
+            android:paddingStart="10dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            tools:ignore="RtlSymmetry" />
+
+        <Button
+            android:id="@+id/register"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_round"
+            android:elevation="3dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:layout_marginTop="40dp"
+            android:text="@string/btn2"
+            android:textColor="#FFFF"
+            android:textSize="25sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/go_login"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="50dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:layout_marginTop="40dp"
+            android:text="@string/text2"
+            android:textStyle="bold"/>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
