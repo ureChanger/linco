@@ -45,9 +45,9 @@
     </LinearLayout>
 
 
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="111dp">
+<!--    <GridLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="111dp">-->
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile_image"
@@ -80,7 +80,7 @@
             tools:layout_editor_absoluteY="173dp" />
 
 
-    </GridLayout>
+<!--    </GridLayout>-->
 
 
     <TextView

@@ -3,6 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/June/AndroidStudioProjects/linco/app/src/main/res/drawable/button_round.xml" value="0.2552083333333333" />
+        <entry key="..\:/Users/June/AndroidStudioProjects/linco/app/src/main/res/layout/activity_details.xml" value="0.2390625" />
+        <entry key="..\:/Users/June/AndroidStudioProjects/linco/app/src/main/res/layout/activity_main.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/June/AndroidStudioProjects/linco/app/src/main/res/layout/activity_popup.xml" value="0.2390625" />
+        <entry key="..\:/Users/June/AndroidStudioProjects/linco/app/src/main/res/layout/activity_posting.xml" value="0.2390625" />
+        <entry key="..\:/Users/June/AndroidStudioProjects/linco/app/src/main/res/layout/activity_register.xml" value="0.2390625" />
+        <entry key="..\:/Users/June/AndroidStudioProjects/linco/app/src/main/res/layout/activity_signin.xml" value="0.2390625" />
+        <entry key="..\:/Users/June/AndroidStudioProjects/linco/app/src/main/res/layout/activity_test.xml" value="0.2390625" />
+        <entry key="..\:/Users/June/AndroidStudioProjects/linco/app/src/main/res/layout/dialog.xml" value="0.2390625" />
+        <entry key="..\:/Users/June/AndroidStudioProjects/linco/app/src/main/res/layout/item_grid_thumbnail.xml" value="0.2390625" />
+        <entry key="..\:/Users/June/AndroidStudioProjects/linco/app/src/main/res/layout/mypage.xml" value="0.2390625" />
+        <entry key="..\:/Users/June/AndroidStudioProjects/linco/app/src/main/res/layout/popup_activity.xml" value="0.2390625" />
+        <entry key="..\:/Users/June/AndroidStudioProjects/linco/app/src/main/res/layout/view_tagview.xml" value="0.2390625" />
         <entry key="..\:/Users/gilhyun/KookMin_Univ/Software/2nd_grade/2nd_semester/linco/app/src/main/res/drawable/border_img.xml" value="0.38229166666666664" />
         <entry key="..\:/Users/gilhyun/KookMin_Univ/Software/2nd_grade/2nd_semester/linco/app/src/main/res/drawable/btn_main_slider.xml" value="0.22083333333333333" />
         <entry key="..\:/Users/gilhyun/KookMin_Univ/Software/2nd_grade/2nd_semester/linco/app/src/main/res/drawable/button_round_main.xml" value="0.20625" />
