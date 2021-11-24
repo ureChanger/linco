@@ -124,6 +124,24 @@
                 app:layout_constraintRight_toRightOf="parent"
                 />
 
+            <EditText
+                android:id="@+id/input_num_people"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30px"
+                android:layout_marginLeft="36px"
+                android:layout_marginRight="36px"
+                android:inputType="number"
+                android:background="@drawable/inputnumber2"
+                android:paddingLeft="50dp"
+                android:hint="현재 참여 인원 설정"
+                android:textColor="#CC000000"
+                android:gravity="center_vertical"
+                app:layout_constraintTop_toBottomOf="@+id/input_num_et"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                />
+
 <!--            <ImageView-->
 <!--                android:id="@+id/input_url_btn"-->
 <!--                android:layout_width="wrap_content"-->
@@ -145,7 +163,7 @@
                 android:hint="URL 주소"
                 android:textColor="#CC000000"
                 android:gravity="center_vertical"
-                app:layout_constraintTop_toBottomOf="@+id/input_num_et"
+                app:layout_constraintTop_toBottomOf="@+id/input_num_people"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 />

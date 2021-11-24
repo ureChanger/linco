@@ -1,12 +1,14 @@
 package com.univ.linco.posting;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -15,19 +17,31 @@ import android.widget.Toast;
 import com.univ.linco.MainActivity;
 import com.univ.linco.R;
 import com.univ.linco.mypage.MypageActivity;
+import com.univ.linco.posting.database.AppDatabase;
+import com.univ.linco.posting.database.Post;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class PostingActivity extends AppCompatActivity {
 
     private final int PICK_IMAGE = 11334;
     private ImageView gallaryImage , selectImageIcon;
-    private EditText titleEt, keywordEt, numEt, urlEt, mainEt;
+    private EditText titleEt, keywordEt, numEt, peopleEt, urlEt, mainEt;
     private ImageView postingBtn , backBtn, userBtn;
     private Uri seletedUri;
+    private Date dt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_posting);
 
+        //데이터베이스
+        final AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, "post-db")
+                .allowMainThreadQueries()
+                .build();
+
+        //이미지 할당
         gallaryImage = findViewById(R.id.gallary_image);
         gallaryImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,8 +50,10 @@ public class PostingActivity extends AppCompatActivity {
             }
         });
 
+        //각 뷰 아이디 할당
         titleEt = findViewById(R.id.title_et);
         numEt = findViewById(R.id.input_num_et);
+        peopleEt = findViewById(R.id.input_num_people);
         urlEt = findViewById(R.id.input_url_et);
         mainEt = findViewById(R.id.main_text_et);
         keywordEt = findViewById(R.id.keyword_et);
@@ -61,14 +77,15 @@ public class PostingActivity extends AppCompatActivity {
             }
         });
         selectImageIcon = findViewById(R.id.image_select_icon);
-        postingBtn.setOnClickListener(view ->{
 
+        //데이터 입력
+        postingBtn.setOnClickListener(view ->{
             String title = "";
             String keyword = "";
             int num = 0;
+            int people = 0;
             String url = "";
             String main = "";
-
 
             if(!TextUtils.isEmpty(titleEt.getText())){
                 title = titleEt.getText().toString();
@@ -83,10 +100,17 @@ public class PostingActivity extends AppCompatActivity {
                 return;
             }
 
-            if(Integer.parseInt(numEt.getText().toString()) > 0){
+            if(!TextUtils.isEmpty(numEt.getText().toString())){
                 num = Integer.parseInt(numEt.getText().toString());
             }else {
-                Toast.makeText(this,"참여인원을 제대로 입력해 주세요 . " ,Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"목표 인원을 제대로 입력해 주세요 . " ,Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if(!TextUtils.isEmpty(peopleEt.getText().toString())){
+                people = Integer.parseInt(peopleEt.getText().toString());
+            }else {
+                Toast.makeText(this,"참여 인원을 제대로 입력해 주세요 . " ,Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -108,14 +132,30 @@ public class PostingActivity extends AppCompatActivity {
                 Toast.makeText(this,"사진을 선택해 주세요 . " ,Toast.LENGTH_SHORT).show();
                 return;
             }
-            PostingData data = new PostingData(title, seletedUri.toString(), keyword, num, url, main);
+
+            Log.d("123", seletedUri.toString());
+
+            dt = new Date(System.currentTimeMillis());
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            String date = sdf.format(dt);
+
+            //내부 데이터베이스에 저장
+            db.postDao().insert(new Post("user_id", keyword, title, main,
+                    Integer.parseInt(numEt.getText().toString()),
+                    Integer.parseInt(peopleEt.getText().toString()), url, date, seletedUri.toString(),
+                    "naver"));
+
             Intent intent = new Intent(this , DetailsActivity.class);
-            intent.putExtra("data" , data );
-            startActivity(intent);
+
+            Toast.makeText(this, db.postDao().getAll().toString(), Toast.LENGTH_LONG).show();
+
+            int id = db.postDao().getAll().get(db.postDao().getAll().size()-1).getId();
+            intent.putExtra("id", id);
+//            startActivity(intent);
         });
     }
 
-
+    //이미지 가져오기
     private void pickFromGallery(){
         Intent intent=new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");

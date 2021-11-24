@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="10dp"
         app:siShape="@drawable/shape_rounded_rectangle"
-        android:src="@drawable/img_item_sample"
+        android:src="@drawable/drawable_post_1"
         app:siSquare="true"/>
 
 

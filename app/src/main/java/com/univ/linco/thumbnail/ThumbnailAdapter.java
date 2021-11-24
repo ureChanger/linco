@@ -52,11 +52,11 @@ public class ThumbnailAdapter extends BaseAdapter {
         TextView target = convertView.findViewById(R.id.text_item_target);
         TextView title = convertView.findViewById(R.id.text_title);
 
-        thumbnail.setImageResource(thumbnailItem.getThumbnail());
-        link.setImageResource(thumbnailItem.getLink());
+        thumbnail.setImageResource(thumbnailItem.getDrawable_image());
+        link.setImageResource(thumbnailItem.getImg_link());
         img_participants.setImageResource(R.drawable.img_participants);
-        participants.setText(thumbnailItem.getParticipants());
-        target.setText(thumbnailItem.getTarget());
+        participants.setText(thumbnailItem.getPeople().toString()+"명");
+        target.setText("("+thumbnailItem.getTarget().toString()+"명)");
         title.setText(thumbnailItem.getTitle());
 
         return convertView;

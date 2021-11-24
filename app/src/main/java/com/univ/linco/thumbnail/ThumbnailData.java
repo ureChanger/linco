@@ -1,31 +1,48 @@
 package com.univ.linco.thumbnail;
 
-import com.univ.linco.R;
-
 import java.util.ArrayList;
-import java.util.Arrays;
+
+import com.univ.linco.R;
+import com.univ.linco.posting.database.Post;
+import com.univ.linco.posting.database.PostDummyData;
 
 public class ThumbnailData {
     //요청하기 코드 "날짜순", 등등
+    private PostDummyData postDummyData = new PostDummyData();
+    private ArrayList<Post> dummyData = postDummyData.getPostDummyData();
 
     //임의로 직접 입력
-    ArrayList<ThumbnailItem> thumbnaiData = new ArrayList<ThumbnailItem>(
-            Arrays.asList(
-                    new ThumbnailItem("00000001", "00000001", "2021-11-09", "camping", R.drawable.img_item_sample, R.drawable.img_instagram, "5명", "(13명)", "편안함 최강 가족용 텐트 / 12인용 / Camp zzang"),
-                    new ThumbnailItem("00000001", "00000001", "2021-11-09", "camping", R.drawable.img_item_sample, R.drawable.img_instagram, "5명", "(13명)", "편안함 최강 가족용 텐트 / 12인용 / Camp zzang"),
-                    new ThumbnailItem("00000001", "00000001", "2021-11-09", "camping", R.drawable.img_item_sample, R.drawable.img_instagram, "5명", "(13명)", "편안함 최강 가족용 텐트 / 12인용 / Camp zzang"),
-                    new ThumbnailItem("00000001", "00000001", "2021-11-09", "camping", R.drawable.img_item_sample, R.drawable.img_instagram, "5명", "(13명)", "편안함 최강 가족용 텐트 / 12인용 / Camp zzang"),
-                    new ThumbnailItem("00000001", "00000001", "2021-11-09", "camping", R.drawable.img_item_sample, R.drawable.img_instagram, "5명", "(13명)", "편안함 최강 가족용 텐트 / 12인용 / Camp zzang"),
-                    new ThumbnailItem("00000001", "00000001", "2021-11-09", "camping", R.drawable.img_item_sample, R.drawable.img_instagram, "5명", "(13명)", "편안함 최강 가족용 텐트 / 12인용 / Camp zzang"),
-                    new ThumbnailItem("00000001", "00000001", "2021-11-09", "camping", R.drawable.img_item_sample, R.drawable.img_instagram, "5명", "(13명)", "편안함 최강 가족용 텐트 / 12인용 / Camp zzang"),
-                    new ThumbnailItem("00000001", "00000001", "2021-11-09", "camping", R.drawable.img_item_sample, R.drawable.img_instagram, "5명", "(13명)", "편안함 최강 가족용 텐트 / 12인용 / Camp zzang"),
-                    new ThumbnailItem("00000001", "00000001", "2021-11-09", "camping", R.drawable.img_item_sample, R.drawable.img_instagram, "5명", "(13명)", "편안함 최강 가족용 텐트 / 12인용 / Camp zzang"),
-                    new ThumbnailItem("00000001", "00000001", "2021-11-09", "camping", R.drawable.img_item_sample, R.drawable.img_instagram, "5명", "(13명)", "편안함 최강 가족용 텐트 / 12인용 / Camp zzang"),
-                    new ThumbnailItem("00000001", "00000001", "2021-11-09", "camping", R.drawable.img_item_sample, R.drawable.img_instagram, "5명", "(13명)", "편안함 최강 가족용 텐트 / 12인용 / Camp zzang")
-            )
-    );
+    private ArrayList<ThumbnailItem> thumbnailData = new ArrayList<ThumbnailItem>(){
+        {
+            for(int i=0; i<dummyData.size(); i++){
+                Post data = dummyData.get(i);
+                Integer img_channel = R.drawable.naver;
+                switch (data.getChannel()){
+                    case "naver":
+                        img_channel = R.drawable.naver;
+                        break;
+                    case "instagram":
+                        img_channel = R.drawable.img_instagram;
+                        break;
+                }
+                add(
+                        new ThumbnailItem(
+                                Integer.toString(i),
+                                data.getUser_id(),
+                                data.getDate(),
+                                data.getKeyword(),
+                                Integer.parseInt(data.getUri_image()),
+                                data.getTitle(),
+                                data.getTarget(),
+                                data.getPeople(),
+                                img_channel
+                        )
+                );
+            }
+        }
+    };
 
     public ArrayList<ThumbnailItem> getThumbnailData(){
-        return thumbnaiData;
+        return thumbnailData;
     }
 }
