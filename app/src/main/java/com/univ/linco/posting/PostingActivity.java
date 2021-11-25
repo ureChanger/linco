@@ -145,6 +145,7 @@ public class PostingActivity extends AppCompatActivity {
                     Integer.parseInt(peopleEt.getText().toString()), url, date, seletedUri.toString(),
                     "naver"));
 
+
             Intent intent = new Intent(this , DetailsActivity.class);
 
             Toast.makeText(this, db.postDao().getAll().toString(), Toast.LENGTH_LONG).show();

@@ -17,12 +17,17 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 
 import com.univ.linco.MainActivity;
 import com.univ.linco.R;
 import com.univ.linco.mypage.MypageActivity;
 import com.univ.linco.posting.PostingData;
+import com.univ.linco.posting.database.AppDatabase;
+import com.univ.linco.posting.database.Post;
+
+import java.util.ArrayList;
 
 public class DetailsActivity extends AppCompatActivity {
 
@@ -43,6 +48,25 @@ public class DetailsActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
+
+        //데이터베이스
+        final AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, "post-db")
+                .allowMainThreadQueries()
+                .build();
+
+        //데이터베이스로부터 SELECT(조회) 쿼리하여 전체 저장 데이터 가져오기
+        ArrayList<Post> lstPostData = (ArrayList<Post>) db.postDao().getAll();
+        // 현재는 임시로 DB List에서 가장 마지막으로 작성 된 게시글 정보를 가져옴
+        Post post = lstPostData.get(lstPostData.size() - 1);
+
+        String strTitle = post.getTitle();
+        String strImgUrl = post.getUri_image();
+        String strKeyword = post.getKeyword();
+        int numVal = post.getTarget();
+        String strUrl = post.getUrl();
+        String strMain = post.getContent();
+
+        PostingData postingData = new PostingData(strTitle, strImgUrl, strKeyword, numVal, strUrl, strMain);
 
         PostingData data;
 
