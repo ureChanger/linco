@@ -1,76 +1,127 @@
 package com.univ.linco.mypage;
-
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
+//..
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
+
+import com.univ.linco.MainActivity;
 import com.univ.linco.R;
+import com.univ.linco.signin.SigninActivity;
+import com.univ.linco.thumbnail.ThumbnailAdapter;
+import com.univ.linco.thumbnail.ThumbnailData;
+import com.univ.linco.thumbnail.ThumbnailItem;
+
+import java.util.ArrayList;
 
 public class MypageActivity extends AppCompatActivity {
-    // firebase 사용시
-    // FirebaseAuth auth = FirebaseAuth.getInstance(); 구문 추가하여 로그아웃 구현하기
+
     TextView txtResult;
-    SharedPreferences shared;
-    SharedPreferences.Editor editor;
-    SharedPreferences for_nickname;
+    Intent intent;
+    GridView gridView_mypost;
+    ThumbnailData thumbnail_data;
+    ArrayList<ThumbnailItem> data;
+    SharedPreferences sharedPreferences;
     Intent getID = getIntent();
     String getnickname = getID.getStringExtra("닉네임");
-    //..
+    private static final String SHARED_PREF_NAME = "mypref";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.mypage);
-
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
-
-
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 //        txtResult = (TextView) findViewById(R.id.txtResult);
 
+        thumbnail_data = new ThumbnailData();
+        data = thumbnail_data.getThumbnailData();
+
+
+        Filter filter = new Filter(false,false,false,false,false,false,false,false);
+
+
+        final MypageDatabase db = Room.databaseBuilder(this, MypageDatabase.class, "mypage-db")
+                .allowMainThreadQueries()
+                .build();
+
+        db.mypageDao().getAll();
+
+
+
+
+
+        ImageButton logout = (ImageButton)findViewById(R.id.logout_button);
+        ImageButton back = (ImageButton)findViewById(R.id.left_arrow);
         Button camping = (Button) findViewById(R.id.camping);
+        Button beauty = (Button) findViewById(R.id.beauty);
+        Button wealth = (Button) findViewById(R.id.wealth);
+        Button sports = (Button) findViewById(R.id.sports);
+        Button interior = (Button) findViewById(R.id.interior);
         Button kids = (Button) findViewById(R.id.kids);
-        Button game = (Button) findViewById(R.id.game);
-        Button watch = (Button) findViewById(R.id.watch);
+        Button device = (Button) findViewById(R.id.device);
+        Button book = (Button) findViewById(R.id.book);
         Button fashion = (Button) findViewById(R.id.fashion);
         Button reset = (Button) findViewById(R.id.reset);
-        ImageButton back = (ImageButton) findViewById(R.id.left_arrow);
-        ImageButton logout = (ImageButton) findViewById(R.id.logout_button);
-        TextView nickname = (TextView) findViewById(R.id.nickname);
-        for_nickname = getSharedPreferences("UserInfo", MODE_PRIVATE);
-        nickname.setText(getnickname);
+
+        sharedPreferences = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE);
 
 
 
-        final String[] filter_list = {"캠핑","육아","게임","시계","패션"};
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.clear();
+                editor.commit();
+                finish();
+                intent = new Intent(getApplicationContext(), SigninActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
-        // assembly시 로그아웃 구현
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
-//        logout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(MypageActivity.this , MainActivity.class);
-//                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
-//                startActivity(i);
-//            }
-//        });
-
-
-
-        //메인 화면으로 전환하는 intent
 //        back.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                Intent to_main = new Intent(getApplicationContext(), MainActivity);
-//                startActivity(to_main);
+//                name_intent = new Intent(getApplicationContext(), MainActivity.class);
+//                startActivity(name_intent);
+//            }
+//        });
+
+//        logout.setOnClickListener(new Button.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(getApplicationContext(), "로그아웃 성공!", Toast.LENGTH_SHORT).show();
+//
+//                // 로그아웃 부분
+//                UserManagement.getInstance()
+//                        .requestLogout(new LogoutResponseCallback() {
+//                            @Override
+//                            public void onCompleteLogout() {
+//                                // 로그아웃이 되었다면 로그인 액티비티로 넘어간다.
+//                                Intent intent = new Intent(MypageActivity.this, LoginActivity.class);
+//                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                                startActivity(intent);
+//                            }
+//                        });
 //            }
 //        });
 
@@ -78,70 +129,117 @@ public class MypageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 camping.setVisibility(View.GONE);
-                editor.putBoolean("캠핑",false);
-                editor.commit();
+                filter.setCamping(true);
+                db.mypageDao().insert(filter);
+            }
+        });
+        beauty.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                beauty.setVisibility(View.GONE);
+                filter.setBeauty(false);
+                db.mypageDao().insert(filter);
+            }
+        });
+        wealth.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                wealth.setVisibility(View.GONE);
+                filter.setWealth(false);
+                db.mypageDao().insert(filter);
+            }
+        });
+        sports.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                sports.setVisibility(View.GONE);
+                filter.setSports(false);
+                db.mypageDao().insert(filter);
+            }
+        });
+        interior.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                wealth.setVisibility(View.GONE);
+                filter.setInterior(false);
+                db.mypageDao().insert(filter);
             }
         });
         kids.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                interior.setVisibility(View.GONE);
+                filter.setKids(false);
+                db.mypageDao().insert(filter);
+            }
+        });
+        device.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
                 kids.setVisibility(View.GONE);
-                editor.putBoolean("육아",false);
-                editor.commit();
+                filter.setDevice(false);
+                db.mypageDao().insert(filter);
             }
         });
-        game.setOnClickListener(new View.OnClickListener(){
+        book.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                game.setVisibility(View.GONE);
-                editor.putBoolean("게임",false);
-                editor.commit();
+                device.setVisibility(View.GONE);
+                filter.setBook(false);
+                db.mypageDao().insert(filter);
             }
         });
-        watch.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                watch.setVisibility(View.GONE);
-                editor.putBoolean("시계",false);
-                editor.commit();
-            }
-        });
+
         fashion.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                fashion.setVisibility(View.GONE);
-                editor.putBoolean("패션",false);
-                editor.commit();
+                book.setVisibility(View.GONE);
+                filter.setFashion(false);
+                db.mypageDao().insert(filter);
             }
         });
+
+
+
 
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 camping.setVisibility(View.VISIBLE);
+                beauty.setVisibility(View.VISIBLE);
+                wealth.setVisibility(View.VISIBLE);
+                sports.setVisibility(View.VISIBLE);
+                interior.setVisibility(View.VISIBLE);
                 kids.setVisibility(View.VISIBLE);
-                game.setVisibility(View.VISIBLE);
-                watch.setVisibility(View.VISIBLE);
+                device.setVisibility(View.VISIBLE);
+                book.setVisibility(View.VISIBLE);
                 fashion.setVisibility(View.VISIBLE);
-                editor.putBoolean("캠핑",true);
-                editor.putBoolean("육아",true);
-                editor.putBoolean("게임",true);
-                editor.putBoolean("시계",true);
-                editor.putBoolean("패션",true);
-                editor.commit();
+                filter.setCamping(true);
+                filter.setBeauty(true);
+                filter.setWealth(true);
+                filter.setSports(true);
+                filter.setInterior(true);
+                filter.setKids(true);
+                filter.setDevice(true);
+                filter.setBook(true);
+                filter.setFashion(true);
             }
         });
+
+        gridView_mypost = findViewById(R.id.gridView_mypost);
+        ThumbnailAdapter adapter = new ThumbnailAdapter();
+
+        for (int i=0; i<data.size();i++){
+            adapter.addItem(data.get(i));
+        }
+
+        gridView_mypost.setAdapter(adapter);
+
+
 
 
 
     }
-
-    //로그아웃 구현
-
-//    public void logout(View view){
-//        auth.signOut();
-//        finish();
-//    }
 
 
 //        //버튼

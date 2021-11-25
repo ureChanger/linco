@@ -14,6 +14,9 @@ public class Filter {
     private boolean book = true;
     private boolean fashion = true;
 
+    public Filter(boolean camping, boolean beauty, boolean wealth, boolean sports, boolean interior, boolean kids, boolean device, boolean book) {
+    }
+
     public boolean isCamping() {
         return camping;
     }
