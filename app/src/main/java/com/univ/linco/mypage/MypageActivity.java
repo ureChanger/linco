@@ -22,6 +22,7 @@ public class MypageActivity extends AppCompatActivity {
     SharedPreferences for_nickname;
     Intent getID = getIntent();
     String getnickname = getID.getStringExtra("닉네임");
+    //..
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
