@@ -7,12 +7,14 @@
     android:orientation="vertical"
     tools:context=".mypage.MypageActivity">
 
+
     <LinearLayout
         android:layout_width="411dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:orientation="horizontal"
         android:paddingTop="10dp">
+
 
         <ImageButton
             android:id="@+id/left_arrow"
@@ -45,9 +47,10 @@
     </LinearLayout>
 
 
-<!--    <GridLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="111dp">-->
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="111dp"
+        android:layout_marginTop="10dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile_image"
@@ -57,30 +60,45 @@
             android:layout_marginTop="16dp"
             android:src="@drawable/seulgi" />
 
-        <TextView
+        <!--        <TextView-->
+        <!--            android:id="@+id/nickname"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginLeft="50dp"-->
+        <!--            android:layout_marginTop="20dp"-->
+        <!--            android:text="홍길동님"-->
+        <!--            android:textColor="@color/black"-->
+        <!--            android:textSize="30sp"-->
+        <!--            android:textStyle="bold" />-->
+        <!--        //아이디 표시를 위해 android:text를 제거할 것-->
+
+        <EditText
             android:id="@+id/nickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="1"
             android:layout_marginLeft="50dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="14dp"
             android:text="홍길동님"
+            android:textColor="@color/black"
             android:textSize="30sp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/editprofile"
-            android:layout_width="173dp"
-            android:layout_height="35dp"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_column="1"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="50dp"
             android:background="@drawable/button_round"
             android:text="회원정보수정"
             tools:layout_editor_absoluteY="173dp" />
 
 
-<!--    </GridLayout>-->
+    </GridLayout>
 
 
     <TextView
@@ -88,69 +106,117 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="관심키워드"
-        android:layout_marginTop="30dp" />
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"/>
 
 
-    <TableLayout
+    <HorizontalScrollView
+
+        android:id="@+id/ScrollView1"
+        android:scrollbars="none"
         android:layout_width="match_parent"
-        android:layout_height="235dp"
-        android:stretchColumns="*">
+        android:layout_height="70dp">
 
-        <TableRow>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/camping"
-                android:layout_width="39dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginBottom="5dp"
-                android:background="@drawable/button_round"
-                android:text="#캠핑" />
-
-        <Button
-            android:id="@+id/kids"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginBottom="5dp"
-            android:background="@drawable/button_round"
-            android:text="#육아" />
-
-        <Button
-            android:id="@+id/game"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginBottom="5dp"
-            android:background="@drawable/button_round"
-            android:text="#게임" />
-
-
-        </TableRow>
-
-        <TableRow>
-            <Button
-                android:id="@+id/watch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_round"
-                android:text="# 시계" />
+                android:text="# 캠핑" />
 
             <Button
-                android:id="@+id/fashion"
+                android:id="@+id/beauty"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/button_round"
+                android:text="# 뷰티" />
+
+            <Button
+                android:id="@+id/wealth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/button_round"
+                android:text="# 건강" />
+
+            <Button
+                android:id="@+id/sports"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/button_round"
+                android:text="# 스포츠" />
+
+            <Button
+                android:id="@+id/interior"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/button_round"
+                android:text="# 인테리어" />
+
+
+            <Button
+                android:id="@+id/kids"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/button_round"
+                android:text="# 육아" />
+
+            <Button
+                android:id="@+id/device"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/button_round"
+                android:text="# 전자기기" />
+
+            <Button
+                android:id="@+id/book"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/button_round"
+                android:text="# 도서" />
+
+            <Button
+                android:id="@+id/fashion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_round"
                 android:text="# 패션" />
+
 
             <Button
                 android:id="@+id/reset"
@@ -158,16 +224,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_round"
                 android:text="# 초기화" />
 
-        </TableRow>
+        </LinearLayout>
+    </HorizontalScrollView>
 
-
-
-
-    </TableLayout>
 
 
     <TextView
@@ -175,86 +238,61 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="내가 쓴 글"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginLeft="10dp"
         android:layout_marginBottom="10dp"
         />
 
-    <GridView
-        android:id="@+id/mypost_list"
+    <!--    <GridView-->
+    <!--        android:id="@+id/mypost_list"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:gravity="center"-->
+    <!--        android:numColumns="2">-->
+    <!--    </GridView>-->
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:numColumns="2">
-    </GridView>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="10dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        >
+
+        <GridView
+            android:id="@+id/gridView_mypost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:horizontalSpacing="10dp"
+            android:numColumns="auto_fit"
+            android:scrollbars="none"
+            android:verticalSpacing="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </ScrollView>
+
+    <!--    <GridView-->
+    <!--        android:id="@+id/mypost_list"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:gravity="center"-->
+    <!--        android:numColumns="2">-->
+    <!--    </GridView>-->
+
+
+
 
 
 
 
 </LinearLayout>
-
-
-    <!--    <ImageButton-->
-    <!--        android:id="@+id/left_arrow"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginTop="16dp"-->
-    <!--        android:background="#FFFFFF"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintHorizontal_bias="0.044"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        app:srcCompat="@drawable/left_arrow" />-->
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/mypage"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:text="마이페이지"-->
-    <!--        android:textSize="28sp"-->
-    <!--        android:layout_gravity="center"-->
-    <!--        tools:layout_editor_absoluteX="129dp"-->
-    <!--        tools:layout_editor_absoluteY="26dp" />-->
-    <!--    -->
-    <!--    <ImageButton-->
-    <!--        android:id="@+id/logout_button"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginTop="16dp"-->
-    <!--        android:layout_marginEnd="16dp"-->
-    <!--        android:background="#FFFFFF"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        app:srcCompat="@drawable/logout" />-->
-
-    <!--    <de.hdodenhof.circleimageview.CircleImageView-->
-    <!--        android:id="@+id/profile_image"-->
-    <!--        android:layout_width="100dp"-->
-    <!--        android:layout_height="100dp"-->
-    <!--        android:layout_marginTop="16dp"-->
-    <!--        android:src="@drawable/seulgi" />-->
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/nickname"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:text="홍길동"-->
-    <!--        android:textSize="30sp"-->
-    <!--        android:textStyle="bold"-->
-    <!--        tools:layout_editor_absoluteX="159dp"-->
-    <!--        tools:layout_editor_absoluteY="126dp" />-->
-
-    <!--    <Button-->
-    <!--        android:id="@+id/editprofile"-->
-    <!--        android:layout_width="134dp"-->
-    <!--        android:layout_height="42dp"-->
-    <!--        android:background="@drawable/button_round"-->
-    <!--        android:text="회원정보수정"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintHorizontal_bias="0.537"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        tools:layout_editor_absoluteY="173dp" />-->
-
-<!--<Button-->
-<!--android:id="@+id/button"-->
-<!--android:layout_width="match_parent"-->
-<!--android:layout_height="wrap_content"-->
-<!--android:text="Button" />-->
