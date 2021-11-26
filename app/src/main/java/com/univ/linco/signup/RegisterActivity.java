@@ -15,6 +15,8 @@ import android.widget.Toast;
 import com.univ.linco.R;
 import com.univ.linco.signin.SigninActivity;
 
+import java.util.Arrays;
+
 public class RegisterActivity extends AppCompatActivity{
 
     EditText user_name;
@@ -46,8 +48,8 @@ public class RegisterActivity extends AppCompatActivity{
         final AppDatabase db = Room.databaseBuilder(this, AppDatabase.class,"todo-db").allowMainThreadQueries().build();
 
         user_name.setText(db.todoDao().getAll().get(0).getName());
-        user_reg_id.setText(db.todoDao().getAll().get(0).getID());
-        user_reg_pw.setText(db.todoDao().getAll().get(0).getPassword());
+        user_reg_id.setText(db.todoDao().getAll().get(0).getUser_id());
+        user_reg_pw.setText(db.todoDao().getAll().get(0).getUser_password());
         user_reg_pwc.setText(db.todoDao().getAll().get(0).getPasswordcheck());
 
         //슬라이스
@@ -59,7 +61,7 @@ public class RegisterActivity extends AppCompatActivity{
             if  (user_name != null && user_reg_id != null && user_reg_pw != null && user_reg_pwc != null && user_reg_pw == user_reg_pwc){
 
                 db.todoDao().insert(new Todo(user_name.getText().toString(),user_reg_id.getText().toString(),
-                        user_reg_pw.getText().toString(), user_reg_pwc.getText().toString(), keyword.toString()));
+                        user_reg_pw.getText().toString(), user_reg_pwc.getText().toString(), Arrays.toString(keyword)));
                 // user_name.setText(db.todoDao().getAll().get(0).getName());
 
                 Log.v("123", "가입 클릭");

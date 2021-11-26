@@ -29,6 +29,7 @@ public class PopupActivity extends Activity {
     Button btn12;
     String keyword = "";
 
+
     SharedPreferences shared;
     SharedPreferences.Editor editor;
 
@@ -50,6 +51,7 @@ public class PopupActivity extends Activity {
         btn10 = (CheckBox) findViewById(R.id.btn10);
         btn11 = (CheckBox) findViewById(R.id.btn11);
         btn12 = (Button) findViewById(R.id.btn12);
+
 
 
         if (btn3.isChecked()){
@@ -120,7 +122,10 @@ public class PopupActivity extends Activity {
         //데이터 전달하기
         Toast.makeText(PopupActivity.this, "Keyword 설정 완료", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+
+        intent.putExtra("keyword",keyword);
         startActivity(intent);
+
 
         //액티비티(팝업) 닫기
         finish();
