@@ -1,20 +1,11 @@
 # linco
-공동구매 링크 공유 플랫폼
+공동구매 링크 공유 플랫폼 Linco 입니다.
 
 ![image](https://user-images.githubusercontent.com/56578913/140436467-5088aeab-d774-4e69-bc89-c8bd6a28d934.png)
 
 
-# Linco
-
-공동구매 플랫폼 Linco 입니다.
-	> To start syncing your workspace, just sign in with Google in the menu.
-	
-
-# Linco
-
-공동구매 플랫폼 Linco입니다.
-
 > **실행환경** : The **Synchronize now** 안드로이드 스튜디오
+> 
 > **기능구현** : Room 데이터베이스 사용
 
 
