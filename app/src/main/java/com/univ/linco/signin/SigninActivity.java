@@ -16,9 +16,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.univ.linco.R;
+import com.univ.linco.mypage.MypageActivity;
 import com.univ.linco.signup.RegisterActivity;
 
 public class SigninActivity extends AppCompatActivity {
+
 
     EditText user_id;
     EditText user_pw;
@@ -26,6 +28,8 @@ public class SigninActivity extends AppCompatActivity {
     TextView go_reg;
     String shared = "file";
     SharedPreferences prefs;
+    Intent for_mypage_nickname = new Intent(this, MypageActivity.class);
+    SharedPreferences for_mypage_nickname_preferences = getSharedPreferences("UserInfo", MODE_PRIVATE);;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -73,11 +77,23 @@ public class SigninActivity extends AppCompatActivity {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+
+                    //Editor를 preferences에 쓰겠다고 연결
+                    SharedPreferences.Editor editor = for_mypage_nickname_preferences.edit();
+                    //putString(KEY,VALUE)
+                    editor.putString("userid",user_id.getText().toString());
+                    //항상 commit & apply 를 해주어야 저장이 된다.
+                    editor.commit();
+                    //메소드 호출
+                    getPreferences();
                 }
             });
         }else{
             Intent intent = new Intent(getApplicationContext(), SigninActivity.class);
             startActivity(intent);
         }
+    }
+    private void getPreferences(){
+        for_mypage_nickname.putExtra("닉네임", for_mypage_nickname_preferences.getString("userid",""));
     }
 }
