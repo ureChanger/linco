@@ -9,12 +9,14 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.univ.linco.mypage.MypageActivity;
+import com.univ.linco.posting.DetailsActivity;
 import com.univ.linco.posting.PostingActivity;
 import com.univ.linco.posting.database.Post;
 import com.univ.linco.posting.database.PostClient;
@@ -27,6 +29,7 @@ import com.univ.linco.thumbnail.ThumbnailItem;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.LongFunction;
 
 public class MainActivity extends AppCompatActivity {
     ImageButton btn_posting, btn_mypage;
@@ -37,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     ThumbnailData thumbnail_data;
     ArrayList<ThumbnailItem> data;
     Filtering filter;
+    ThumbnailAdapter adapter = new ThumbnailAdapter();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +92,9 @@ public class MainActivity extends AppCompatActivity {
                     adapter_mine.addItem(data_mine.get(i));
                 }
 
-                gridView_thumbnail.setAdapter(adapter_mine);
+                adapter = adapter_mine;
+
+                gridView_thumbnail.setAdapter(adapter);
             }
         });
 
@@ -102,7 +108,9 @@ public class MainActivity extends AppCompatActivity {
                             adapter_all.addItem(data_all.get(i));
                         }
 
-                        gridView_thumbnail.setAdapter(adapter_all);
+                        adapter = adapter_all;
+
+                        gridView_thumbnail.setAdapter(adapter);
                     }
                 }
         );
@@ -118,20 +126,32 @@ public class MainActivity extends AppCompatActivity {
                             adapter_popular.addItem(data_popular.get(i));
                         }
 
-                        gridView_thumbnail.setAdapter(adapter_popular);
+                        adapter = adapter_popular;
+
+                        gridView_thumbnail.setAdapter(adapter);
                     }
                 }
         );
 
         //그리드뷰 그리기
         gridView_thumbnail = findViewById(R.id.gridView_thumbnail);
-        ThumbnailAdapter adapter = new ThumbnailAdapter();
 
         for (int i=0; i<data.size();i++){
             adapter.addItem(data.get(i));
         }
 
         gridView_thumbnail.setAdapter(adapter);
+        
+        gridView_thumbnail.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent to_detail = new Intent(getApplicationContext(), DetailsActivity.class);
+                final ThumbnailItem item = (ThumbnailItem) adapter.getItem(position);
+                int id_item = item.getPost_id();
+                to_detail.putExtra("id", id_item);
+                startActivity(to_detail);
+            }
+        });
 
     }
 }

@@ -10,6 +10,7 @@ public class PostDummyData {
     private ArrayList<Post> postDummyData = new ArrayList<Post>(
             Arrays.asList(
                     new Post(
+                            0,
                             "dummy",
                             "camping",
                             "캠핑 버터플라이 체어",
@@ -24,6 +25,7 @@ public class PostDummyData {
                             "naver"
                     ),
                     new Post(
+                            1,
                             "dummy",
                             "baby",
                             "공룡식기 식판세트",
@@ -41,6 +43,7 @@ public class PostDummyData {
                             "instagram"
                     ),
                     new Post(
+                            2,
                             "dummy",
                             "fashion",
                             "폴로 랄프로렌 니트 브이넥 라운드",
@@ -54,6 +57,7 @@ public class PostDummyData {
                             "naver"
                     ),
                     new Post(
+                            3,
                             "dummy",
                             "beauty",
                             "프레미오21 I&E솔루션 전해질 미스트 피부링겔미스트",
@@ -68,6 +72,7 @@ public class PostDummyData {
                             "naver"
                     ),
                     new Post(
+                            4,
                             "dummy",
                             "health",
                             "프리미엄 콜라겐, 퍼펙트큐브플러스",
@@ -83,6 +88,7 @@ public class PostDummyData {
                             "naver"
                     ),
                     new Post(
+                            5,
                             "dummy",
                             "health",
                             "람노서스에이스 유산균",
@@ -98,6 +104,7 @@ public class PostDummyData {
                             "naver"
                     ),
                     new Post(
+                            6,
                             "dummy",
                             "baby",
                             "크리스마스 망토 원피스",
@@ -117,6 +124,7 @@ public class PostDummyData {
                             "instagram"
                     ),
                     new Post(
+                            7,
                             "dummy",
                             "baby",
                             "유아 멀티책상 2종",

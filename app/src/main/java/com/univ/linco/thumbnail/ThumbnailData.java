@@ -29,7 +29,8 @@ public class ThumbnailData {
                     }
                     add(
                             new ThumbnailItem(
-                                    Integer.toString(i),
+                                    data.getId(),
+                                    data.getPost_id(),
                                     data.getUser_id(),
                                     data.getDate(),
                                     data.getKeyword(),

@@ -18,7 +18,10 @@ public class PostClient {
 
         //creating the app database with Room database builder
         //db-post is the name of the database
-        appDatabase = Room.databaseBuilder(mCtx, AppDatabase.class, "post_database").allowMainThreadQueries().build();
+        appDatabase = Room.databaseBuilder(mCtx, AppDatabase.class, "database_post")
+                .fallbackToDestructiveMigration()
+                .allowMainThreadQueries()
+                .build();
 
         //데이터베이스에 아무것도 없다면 더미데이터 추가
         if(appDatabase.postDao().getAll().size() == 0){

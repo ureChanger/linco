@@ -9,6 +9,7 @@ import androidx.room.PrimaryKey;
 public class Post {
     @PrimaryKey(autoGenerate = true)
     private int id;
+    private int post_id;
     private String user_id;
     private String keyword;
     private String title;
@@ -21,10 +22,11 @@ public class Post {
     private Integer id_drawable;
     private String channel;
 
-    public Post(String user_id, String keyword, String title, String content,
+    public Post(int post_id, String user_id, String keyword, String title, String content,
                 Integer target, Integer people, String url, String date, String uri_image,
                 Integer id_drawable, String channel) {
         this.id = id;
+        this.post_id = post_id;
         this.user_id = user_id;
         this.keyword = keyword;
         this.title = title;
@@ -36,6 +38,14 @@ public class Post {
         this.uri_image = uri_image;
         this.id_drawable = id_drawable;
         this.channel = channel;
+    }
+
+    public int getPost_id() {
+        return post_id;
+    }
+
+    public void setPost_id(int post_id) {
+        this.post_id = post_id;
     }
 
     public int getId() {

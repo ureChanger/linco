@@ -1,7 +1,8 @@
 package com.univ.linco.thumbnail;
 
 public class ThumbnailItem {
-    private String post_id;
+    private int id;
+    private int post_id;
     private String user_id;
     private String date;
     private String keyword;
@@ -12,9 +13,10 @@ public class ThumbnailItem {
     private Integer people;
     private Integer img_link;
 
-    public ThumbnailItem(String post_id, String user_id, String date, String keyword,
+    public ThumbnailItem(int id, int post_id, String user_id, String date, String keyword,
                          String uri_image, Integer drawable_image, String title,
                          Integer target, Integer people, Integer img_link) {
+        this.id = id;
         this.post_id = post_id;
         this.user_id = user_id;
         this.date = date;
@@ -27,11 +29,19 @@ public class ThumbnailItem {
         this.img_link = img_link;
     }
 
-    public String getPost_id() {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getPost_id() {
         return post_id;
     }
 
-    public void setPost_id(String post_id) {
+    public void setPost_id(int post_id) {
         this.post_id = post_id;
     }
 
