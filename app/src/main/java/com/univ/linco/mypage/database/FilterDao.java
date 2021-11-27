@@ -1,25 +1,26 @@
-package com.univ.linco.mypage;
+package com.univ.linco.mypage.database;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
 import java.util.List;
 
 @Dao
-public interface MypageDao {
+public interface FilterDao {
     @Query("SELECT * FROM Filter")
     List<Filter> getAll();
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Filter filter);
 
     @Update
-    void updatePost(Filter filter);
+    void updateFilter(Filter filter);
 
     @Delete
-    void deletePost(Filter filter);
+    void deleteFilter(Filter filter);
 
 }

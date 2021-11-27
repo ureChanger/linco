@@ -1,9 +1,12 @@
-package com.univ.linco.mypage;
+package com.univ.linco.mypage.database;
 
 import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 @Entity
 public class Filter {
+    @PrimaryKey(autoGenerate = true)
+    private int id;
     private boolean camping = true;
     private boolean beauty = true;
     private boolean wealth = true;
@@ -14,7 +17,26 @@ public class Filter {
     private boolean book = true;
     private boolean fashion = true;
 
-    public Filter(boolean camping, boolean beauty, boolean wealth, boolean sports, boolean interior, boolean kids, boolean device, boolean book) {
+    public Filter(boolean camping, boolean beauty, boolean wealth, boolean sports, boolean interior,
+                  boolean kids, boolean device, boolean book, boolean fashion) {
+        this.id = id;
+        this.camping = camping;
+        this.beauty = beauty;
+        this.wealth = wealth;
+        this.sports = sports;
+        this.interior = interior;
+        this.kids = kids;
+        this.device = device;
+        this.book = book;
+        this.fashion = fashion;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public boolean isCamping() {
@@ -88,20 +110,22 @@ public class Filter {
     public void setFashion(boolean fashion) {
         this.fashion = fashion;
     }
-    public Filter filter = new Filter(false,false,false,false,
-            false,false,false,false);
 
-
-    public Filter(boolean camping, boolean beauty, boolean wealth, boolean sports, boolean interior,
-                  boolean kids, boolean device, boolean book, boolean fashion) {
-        this.camping = camping;
-        this.beauty = beauty;
-        this.wealth = wealth;
-        this.sports = sports;
-        this.interior = interior;
-        this.kids = kids;
-        this.device = device;
-        this.book = book;
-        this.fashion = fashion;
+    @Override
+    public String toString() {
+        return "Filter{" +
+                "id=" + id +
+                ", camping=" + camping +
+                ", beauty=" + beauty +
+                ", wealth=" + wealth +
+                ", sports=" + sports +
+                ", interior=" + interior +
+                ", kids=" + kids +
+                ", device=" + device +
+                ", book=" + book +
+                ", fashion=" + fashion +
+                '}';
     }
+
+
 }
