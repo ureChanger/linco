@@ -30,16 +30,13 @@
         </activity>
         <activity
             android:name=".posting.PostingActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".mypage.MypageActivity"
             android:exported="true" />
         <activity
             android:name=".posting.DetailsActivity"
-            android:exported="true" >
-
-        </activity>
+            android:exported="true" />
         <activity android:name=".signup.RegisterActivity" />
         <activity
             android:name=".signup.PopupActivity"

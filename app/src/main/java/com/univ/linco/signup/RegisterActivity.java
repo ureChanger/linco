@@ -1,19 +1,21 @@
 package com.univ.linco.signup;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.univ.linco.MainActivity;
 import com.univ.linco.R;
+import com.univ.linco.signin.SigninActivity;
+
+import java.util.Arrays;
 
 public class RegisterActivity extends AppCompatActivity{
 
@@ -25,6 +27,7 @@ public class RegisterActivity extends AppCompatActivity{
     TextView go_login;
     String shared = "file";
     ImageView hashtag;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,98 +42,54 @@ public class RegisterActivity extends AppCompatActivity{
         go_login = (TextView) findViewById(R.id.go_login);
         hashtag = (ImageView) findViewById(R.id.hashtag);
 
-        SharedPreferences sharedPreferences = getSharedPreferences(shared, 0);
+        //받은 데이터
+        String[] keyword = { };
 
-        String name = sharedPreferences.getString("name", "");
-        user_name.setText(name);
+        final AppDatabase db = Room.databaseBuilder(this, AppDatabase.class,"todo-db").allowMainThreadQueries().build();
 
-        String id = sharedPreferences.getString("id", "");
-        user_reg_id.setText(id);
+        user_name.setText(db.todoDao().getAll().get(0).getName());
+        user_reg_id.setText(db.todoDao().getAll().get(0).getUser_id());
+        user_reg_pw.setText(db.todoDao().getAll().get(0).getUser_password());
+        user_reg_pwc.setText(db.todoDao().getAll().get(0).getPasswordcheck());
 
-        String pw = sharedPreferences.getString("pw", "");
-        user_reg_pw.setText(pw);
+        //슬라이스
+//        "/캠핑/게임";
+//        ["캠핑", "게임"];
 
-        String pwc = sharedPreferences.getString("pwc", "");
-        user_reg_pwc.setText(pwc);
+        findViewById(R.id.register).setOnClickListener(v -> {
 
-        go_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            if  (user_name != null && user_reg_id != null && user_reg_pw != null && user_reg_pwc != null && user_reg_pw == user_reg_pwc){
+
+                db.todoDao().insert(new Todo(user_name.getText().toString(),user_reg_id.getText().toString(),
+                        user_reg_pw.getText().toString(), user_reg_pwc.getText().toString(), Arrays.toString(keyword)));
+                // user_name.setText(db.todoDao().getAll().get(0).getName());
+
+                Log.v("123", "가입 클릭");
+                Toast.makeText(RegisterActivity.this, "회원 가입 완료", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), SigninActivity.class);
                 startActivity(intent);
+
+            }else{
+                Toast.makeText(RegisterActivity.this, "회원 가입 정보를 다시 입력해주세요", Toast.LENGTH_SHORT).show();
             }
+
+        });
+
+
+        go_login.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), SigninActivity.class);
+            startActivity(intent);
+            finish();
+        });
+
+        hashtag.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), PopupActivity.class);
+            startActivity(intent);
+            finish();
         });
 
 
 
-    }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-        SharedPreferences sharedPreferences = getSharedPreferences(shared,0);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-
-        if (user_name != null && user_reg_id != null && user_reg_pw != null && user_reg_pwc != null && user_reg_pw == user_reg_pwc) {
-
-            String name = user_name.getText().toString();
-            editor.putString("name", name);
-
-            String id = user_reg_id.getText().toString();
-            editor.putString("id", id);
-
-            String pw = user_reg_pw.getText().toString();
-            editor.putString("pw", pw);
-
-            String pwc = user_reg_pwc.getText().toString();
-            editor.putString("pwc", pwc);
-
-            editor.commit();
-
-            register.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(RegisterActivity.this, "회원 가입 완료", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);
-                }
-            });
-
-        }else{
-            register.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(RegisterActivity.this, "회원 가입 정보를 다시 입력해주세요", Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
-    }
-
-    public void mOnPopupClick(View v){
-        //데이터 담아서 팝업(액티비티) 호출
-        Intent intent = new Intent(this, PopupActivity.class);
-        intent.putExtra("data", "");
-        startActivityForResult(intent, 1);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1) {
-            if (resultCode == RESULT_OK) {
-                //데이터 받기
-                boolean first = data.getBooleanExtra("캠핑",true);
-                boolean second = data.getBooleanExtra("게임", true);
-                boolean third = data.getBooleanExtra("패션", true);
-                boolean fourth = data.getBooleanExtra("육아", true);
-                boolean fifth = data.getBooleanExtra("시계", true);
-                boolean sixth = data.getBooleanExtra("전자기기", true);
-                boolean seventh = data.getBooleanExtra("도서", true);
-                boolean eight = data.getBooleanExtra("요리", true);
-                boolean ninth = data.getBooleanExtra("뷰티", true);
-
-            }
-        }
     }
 }

@@ -14,13 +14,13 @@
     <string name="text2">이미 계정이 있으신가요? 로그인</string>
     <string name="text3">관심 키워드를 선택해주세요</string>
     <string name="btn3">캠핑</string>
-    <string name="btn4">게임</string>
-    <string name="btn5">패션</string>
-    <string name="btn6">육아</string>
-    <string name="btn7">시계</string>
-    <string name="btn8">전자기기</string>
-    <string name="btn9">도서</string>
-    <string name="btn10">요리</string>
-    <string name="btn11">뷰티</string>
+    <string name="btn4">뷰티</string>
+    <string name="btn5">건강</string>
+    <string name="btn6">스포츠</string>
+    <string name="btn7">인테리어</string>
+    <string name="btn8">육아</string>
+    <string name="btn9">전자기기</string>
+    <string name="btn10">도서</string>
+    <string name="btn11">패션</string>
     <string name="btn12">확인</string>
 </resources>
