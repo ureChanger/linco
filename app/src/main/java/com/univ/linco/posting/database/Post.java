@@ -18,11 +18,12 @@ public class Post {
     private String url;
     private String date;
     private String uri_image;
+    private Integer id_drawable;
     private String channel;
 
     public Post(String user_id, String keyword, String title, String content,
                 Integer target, Integer people, String url, String date, String uri_image,
-                String channel) {
+                Integer id_drawable, String channel) {
         this.id = id;
         this.user_id = user_id;
         this.keyword = keyword;
@@ -33,6 +34,7 @@ public class Post {
         this.url = url;
         this.date = date;
         this.uri_image = uri_image;
+        this.id_drawable = id_drawable;
         this.channel = channel;
     }
 
@@ -124,6 +126,14 @@ public class Post {
         this.channel = channel;
     }
 
+    public Integer getId_drawable() {
+        return id_drawable;
+    }
+
+    public void setId_drawable(Integer id_drawable) {
+        this.id_drawable = id_drawable;
+    }
+
     @Override
     public String toString() {
         return "Post{" +
@@ -137,6 +147,7 @@ public class Post {
                 ", url='" + url + '\'' +
                 ", date='" + date + '\'' +
                 ", uri_image='" + uri_image + '\'' +
+                ", id_drawable=" + id_drawable +
                 ", channel='" + channel + '\'' +
                 '}';
     }

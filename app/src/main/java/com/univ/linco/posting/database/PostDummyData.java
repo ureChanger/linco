@@ -19,7 +19,8 @@ public class PostDummyData {
                             50,
                             "https://cafe.naver.com/campingboy/180",
                             "2020-10-05",
-                            Integer.toString(R.drawable.drawable_post_1),
+                            "none",
+                            R.drawable.drawable_post_1,
                             "naver"
                     ),
                     new Post(
@@ -35,7 +36,8 @@ public class PostDummyData {
                             92,
                             "https://www.instagram.com/p/CWmdMPhPP3k/",
                             "2021-11-23",
-                            Integer.toString(R.drawable.drawable_post_6),
+                            "none",
+                            R.drawable.drawable_post_6,
                             "instagram"
                     ),
                     new Post(
@@ -48,7 +50,7 @@ public class PostDummyData {
                             32,
                             "https://blog.naver.com/kyozkyoz/222573540524",
                             "2021-11-20",
-                            Integer.toString(R.drawable.drawable_post_2),
+                            "none",R.drawable.drawable_post_2,
                             "naver"
                     ),
                     new Post(
@@ -61,7 +63,8 @@ public class PostDummyData {
                             532,
                             "https://blog.naver.com/hahhaya/222255590073",
                             "2021-02-25",
-                            Integer.toString(R.drawable.drawable_post_3),
+                            "none",
+                            (R.drawable.drawable_post_3),
                             "naver"
                     ),
                     new Post(
@@ -75,7 +78,8 @@ public class PostDummyData {
                             2,
                             "https://blog.naver.com/hyunjin_seo/222563213012",
                             "2021-11-09",
-                            Integer.toString(R.drawable.drawable_post_4),
+                            "none",
+                            R.drawable.drawable_post_4,
                             "naver"
                     ),
                     new Post(
@@ -89,7 +93,8 @@ public class PostDummyData {
                             589,
                             "https://blog.naver.com/thedining1207/222547390588",
                             "2021-10-25",
-                            Integer.toString(R.drawable.drawable_post_5),
+                            "none",
+                            R.drawable.drawable_post_5,
                             "naver"
                     ),
                     new Post(
@@ -107,7 +112,8 @@ public class PostDummyData {
                             25,
                             "https://www.instagram.com/p/CWlCXBXPkZV/",
                             "2021-11-22",
-                            Integer.toString(R.drawable.drawable_post_7),
+                            "none",
+                            R.drawable.drawable_post_7,
                             "instagram"
                     ),
                     new Post(
@@ -122,7 +128,8 @@ public class PostDummyData {
                             37,
                             "https://www.instagram.com/p/CWnBS0MPwPk/",
                             "2021-11-23",
-                            Integer.toString(R.drawable.drawable_post_8),
+                            "none",
+                            R.drawable.drawable_post_8,
                             "instagram"
                     )
             )

@@ -13,26 +13,13 @@ public class ThumbnailItem {
     private Integer img_link;
 
     public ThumbnailItem(String post_id, String user_id, String date, String keyword,
-                         String uri_image, String title, Integer target, Integer people,
-                         Integer img_link){
+                         String uri_image, Integer drawable_image, String title,
+                         Integer target, Integer people, Integer img_link) {
         this.post_id = post_id;
         this.user_id = user_id;
         this.date = date;
         this.keyword = keyword;
         this.uri_image = uri_image;
-        this.title = title;
-        this.target = target;
-        this.people = people;
-        this.img_link = img_link;
-    }
-
-    public ThumbnailItem(String post_id, String user_id, String date, String keyword,
-                         Integer drawable_image, String title, Integer target, Integer people,
-                         Integer img_link) {
-        this.post_id = post_id;
-        this.user_id = user_id;
-        this.date = date;
-        this.keyword = keyword;
         this.drawable_image = drawable_image;
         this.title = title;
         this.target = target;

@@ -1,6 +1,11 @@
 package com.univ.linco.thumbnail;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +15,7 @@ import android.widget.TextView;
 
 import com.univ.linco.R;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class ThumbnailAdapter extends BaseAdapter {
@@ -52,7 +58,16 @@ public class ThumbnailAdapter extends BaseAdapter {
         TextView target = convertView.findViewById(R.id.text_item_target);
         TextView title = convertView.findViewById(R.id.text_title);
 
-        thumbnail.setImageResource(thumbnailItem.getDrawable_image());
+        if (thumbnailItem.getDrawable_image() == 0){
+            try {
+                thumbnail.setImageURI(Uri.parse(thumbnailItem.getUri_image()));
+            }catch (Exception e){
+                thumbnail.setImageResource(R.drawable.drawable_error);
+            }
+        }else {
+            thumbnail.setImageResource(thumbnailItem.getDrawable_image());
+        }
+
         link.setImageResource(thumbnailItem.getImg_link());
         img_participants.setImageResource(R.drawable.img_participants);
         participants.setText(thumbnailItem.getPeople().toString()+"명");
@@ -61,4 +76,16 @@ public class ThumbnailAdapter extends BaseAdapter {
 
         return convertView;
     }
+
+    public static Bitmap StringToBitmap(String encodedString) {
+        try {
+            byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            return bitmap;
+        } catch (Exception e) {
+            e.getMessage();
+            return null;
+        }
+    }
+
 }

@@ -1,13 +1,19 @@
 package com.univ.linco.posting;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.ImageDecoder;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.telephony.BarringInfo;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -17,9 +23,12 @@ import android.widget.Toast;
 import com.univ.linco.MainActivity;
 import com.univ.linco.R;
 import com.univ.linco.mypage.MypageActivity;
-import com.univ.linco.posting.database.AppDatabase;
 import com.univ.linco.posting.database.Post;
+import com.univ.linco.posting.database.PostClient;
+import com.univ.linco.posting.database.PostDao;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -30,16 +39,17 @@ public class PostingActivity extends AppCompatActivity {
     private EditText titleEt, keywordEt, numEt, peopleEt, urlEt, mainEt;
     private ImageView postingBtn , backBtn, userBtn;
     private Uri seletedUri;
+    private Bitmap bitmap;
     private Date dt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_posting);
 
         //데이터베이스
-        final AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, "post-db")
-                .allowMainThreadQueries()
-                .build();
+        PostDao db = PostClient.getInstance(getApplicationContext()).getAppDatabase()
+                .postDao();
 
         //이미지 할당
         gallaryImage = findViewById(R.id.gallary_image);
@@ -133,25 +143,23 @@ public class PostingActivity extends AppCompatActivity {
                 return;
             }
 
-            Log.d("123", seletedUri.toString());
-
             dt = new Date(System.currentTimeMillis());
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             String date = sdf.format(dt);
 
             //내부 데이터베이스에 저장
-            db.postDao().insert(new Post("user_id", keyword, title, main,
+            db.insert(new Post("user_id", keyword, title, main,
                     Integer.parseInt(numEt.getText().toString()),
-                    Integer.parseInt(peopleEt.getText().toString()), url, date, seletedUri.toString(),
-                    "naver"));
+                    Integer.parseInt(peopleEt.getText().toString()),
+                    url, date, seletedUri.toString(),
+                    0, "naver"));
 
-            Intent intent = new Intent(this , DetailsActivity.class);
+//            Intent intent = new Intent(this , DetailsActivity.class);
+            Intent intent = new Intent(this , MainActivity.class);
 
-            Toast.makeText(this, db.postDao().getAll().toString(), Toast.LENGTH_LONG).show();
-
-            int id = db.postDao().getAll().get(db.postDao().getAll().size()-1).getId();
+            int id = db.getAll().get(db.getAll().size()-1).getId();
             intent.putExtra("id", id);
-//            startActivity(intent);
+            startActivity(intent);
         });
     }
 
