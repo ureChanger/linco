@@ -154,11 +154,9 @@ public class PostingActivity extends AppCompatActivity {
                     url, date, seletedUri.toString(),
                     0, "naver"));
 
-//            Intent intent = new Intent(this , DetailsActivity.class);
-            Intent intent = new Intent(this , MainActivity.class);
+            Intent intent = new Intent(this , DetailsActivity.class);
 
             int id = db.getAll().get(db.getAll().size()-1).getId();
-            intent.putExtra("id", id);
             startActivity(intent);
         });
     }

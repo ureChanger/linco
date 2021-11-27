@@ -26,6 +26,8 @@ import com.univ.linco.mypage.MypageActivity;
 import com.univ.linco.posting.PostingData;
 import com.univ.linco.posting.database.AppDatabase;
 import com.univ.linco.posting.database.Post;
+import com.univ.linco.posting.database.PostClient;
+import com.univ.linco.posting.database.PostDao;
 
 import java.util.ArrayList;
 
@@ -36,6 +38,7 @@ public class DetailsActivity extends AppCompatActivity {
     TextView titleTv, mainTv , perTv , progressTv1, seekbarTv;
     SeekBar seekBar1;
     LinearLayout tagLayout;
+    Post data;
 
     final String[] words = new String[] {"저작권 침해", "위험 소지가 있는 제품", "스팸 및 사기 의심"};
 
@@ -50,12 +53,11 @@ public class DetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_details);
 
         //데이터베이스
-        final AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, "post-db")
-                .allowMainThreadQueries()
-                .build();
+        PostDao db = PostClient.getInstance(getApplicationContext()).getAppDatabase()
+                .postDao();
 
         //데이터베이스로부터 SELECT(조회) 쿼리하여 전체 저장 데이터 가져오기
-        ArrayList<Post> lstPostData = (ArrayList<Post>) db.postDao().getAll();
+        ArrayList<Post> lstPostData = (ArrayList<Post>) db.getAll();
         // 현재는 임시로 DB List에서 가장 마지막으로 작성 된 게시글 정보를 가져옴
         Post post = lstPostData.get(lstPostData.size() - 1);
 
@@ -65,20 +67,6 @@ public class DetailsActivity extends AppCompatActivity {
         int numVal = post.getTarget();
         String strUrl = post.getUrl();
         String strMain = post.getContent();
-
-        PostingData postingData = new PostingData(strTitle, strImgUrl, strKeyword, numVal, strUrl, strMain);
-
-        PostingData data;
-
-        Intent intent = getIntent();
-        data = (PostingData) intent.getSerializableExtra("data");
-
-        Log.d("kdm" , "imageuri  : " + data.getImageUrl() );
-        Log.d("kdm" , "title  : " + data.getTitle() );
-        Log.d("kdm" , "keyword  : " + data.getKeyword() );
-        Log.d("kdm" , "num  : " + data.getNum() );
-        Log.d("kdm" , "url  : " + data.getUrl() );
-        Log.d("kdm" , "main  : " + data.getMain() );
 
         gallaryImage = findViewById(R.id.gallary_image);
         titleTv = findViewById(R.id.title_text);
@@ -107,8 +95,8 @@ public class DetailsActivity extends AppCompatActivity {
             }
         });
 
-        max = data.getNum();
-        url = data.getUrl();
+        max = post.getTarget();
+        url = post.getUrl();
         seekBar1 = findViewById(R.id.seekbar);
         seekBar1.setPadding(0, 0, 0, 0);
         tagLayout = findViewById(R.id.tag_layout);
@@ -130,11 +118,16 @@ public class DetailsActivity extends AppCompatActivity {
 
         });
 
+        data = post;
 
+        try {
+            gallaryImage.setImageURI(Uri.parse(data.getUri_image()));
+        }catch (Exception e){
+            gallaryImage.setImageResource(R.drawable.drawable_error);
+        }
 
-        gallaryImage.setImageURI(Uri.parse(data.getImageUrl()));
         titleTv.setText(data.getTitle());
-        mainTv.setText(data.getMain());
+        mainTv.setText(data.getContent());
         setSeekbarUi();
         setTagView(getTagString(data.getKeyword()));
     }
@@ -173,6 +166,12 @@ public class DetailsActivity extends AppCompatActivity {
     }
 
     private void goUrl(String url){
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url)); startActivity(intent);
+        try {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(intent);
+        }catch (Exception e){
+            Toast.makeText(getApplicationContext(), "url을 정확하게 입력했는지 확인해주세요.", Toast.LENGTH_SHORT).show();
+        }
+
     }
 }
