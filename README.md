@@ -26,27 +26,27 @@
 3. 기존의 온라인 커뮤니티 및 중고 거래 플랫폼을 통한 공동 구매 사기 피해를 방지하기 위한 체계적인 판매 관련 인증 과정으로 전자 상거래의 안전성을 확보하고자 한다.
 
 ## 메인페이지
-
-- 다양한 공동 구매 모집글 둘러보기 
-- 내 모집글, 최신순, 카테고리 등 원하는 게시물 필터링 
-- 게시물 작성, 마이페이지로 쉽게 접근 가능
+![enter image description here](https://user-images.githubusercontent.com/81306023/143718522-52dde321-82d1-45d1-a34d-57b99ed5eac0.png)
+다양한 공동 구매 모집글을 둘러볼 수 있는 메인 화면입니다.
+내 모집글, 최신순 정렬, 원하는 카테고리별로 필터링이 가능합니다.
+게시물 작성 레이아웃, 마이페이지 레이아웃으로 연결됩니다.
 
 
 ## 로그인 / 회원가입
-
+![enter image description here](https://user-images.githubusercontent.com/81306023/143718520-2956cd31-44ea-4e46-a038-f8f94032e30d.png)
 이름,아이디,비밀번호,비밀번호 확인칸으로 구성되어 있습니다.
 
 
 
 
 ## 글쓰기/수정
-
+![enter image description here](https://user-images.githubusercontent.com/81306023/143718519-12297d94-73e4-4527-b203-c2889c6ab259.png)
 자신이 원하는 공동구매를 직접 게시할 수 있습니다. 필수 입력값으로 제목, 목표인원, url주소를 추가해야 합니다.
 
 ## 글 디테일뷰
-
+![enter image description here](https://user-images.githubusercontent.com/81306023/143718517-28e0d9e2-4942-419a-a702-1fb3b80a9e90.png)
 메인-공구 모집글에서 연결되며, 모집중인 공동구매 게시글에 대한 상세 정보를 볼 수 있습니다. 총 모집인원 대비 현재 참여중인 인원이 %표시가 되며, 참여하기 버튼을 누를 시 url연결이 됩니다. 
 
 ## 마이페이지
-
+![enter image description here](https://user-images.githubusercontent.com/81306023/143718521-e8880e59-6373-499e-86a2-3f358a9fe419.png)
 메인-공구모집 레이아웃에서 열람할 수 있는 글은, 설정해둔 필터링 키워드에 한하여 표시됩니다. 마이페이지에선 관심 키워드를 설정하여, 메인-공구모집 레이아웃에서 표시될 글을 설정할 수 있습니다. 또한, 내가 쓴 글에선 자신이 현재까지 작성한 글을 열람할 수 있습니다.
