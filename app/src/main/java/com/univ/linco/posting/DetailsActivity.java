@@ -127,10 +127,8 @@ public class DetailsActivity extends AppCompatActivity {
             gallaryImage.setImageResource(data.getId_drawable());
         }else {
             try {
-                Toast.makeText(getApplicationContext(), "내부 이미지 불러옵니다", Toast.LENGTH_SHORT).show();
                 gallaryImage.setImageURI(Uri.parse(data.getUri_image()));
             }catch(Exception e){
-                Toast.makeText(getApplicationContext(), "어이쿠 오류", Toast.LENGTH_SHORT).show();
                 gallaryImage.setImageResource(R.drawable.drawable_error);
             }
         }

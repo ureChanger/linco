@@ -159,7 +159,7 @@ public class PostingActivity extends AppCompatActivity {
             String date = sdf.format(dt);
 
             //내부 데이터베이스에 저장
-            db.insert(new Post(db.getAll().get(db.getAll().size()-1).getPost_id()+1,user_info.getUser_id(), keyword, title, main,
+            db.insert(new Post(db.getAll().size(),user_info.getUser_id(), keyword, title, main,
                     Integer.parseInt(numEt.getText().toString()),
                     Integer.parseInt(peopleEt.getText().toString()),
                     url, date, seletedUri.toString(),
@@ -167,8 +167,7 @@ public class PostingActivity extends AppCompatActivity {
 
             Intent intent = new Intent(this , DetailsActivity.class);
 
-            int id = db.getAll().get(db.getAll().size()-1).getPost_id();
-            intent.putExtra("id", id);
+            intent.putExtra("id", db.getAll().size()-1);
             startActivity(intent);
         });
     }
