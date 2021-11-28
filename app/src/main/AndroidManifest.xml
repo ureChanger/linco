@@ -15,18 +15,20 @@
         android:theme="@style/Theme.Linco">
         <activity
             android:name=".signin.SigninActivity"
-            android:exported="true" />
-        <activity
-            android:name=".TestActivity"
-            android:exported="true" />
-        <activity
-            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".TestActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+
         </activity>
         <activity
             android:name=".posting.PostingActivity"
@@ -37,7 +39,9 @@
         <activity
             android:name=".posting.DetailsActivity"
             android:exported="true" />
-        <activity android:name=".signup.RegisterActivity" />
+        <activity android:name=".signup.RegisterActivity">
+
+        </activity>
         <activity
             android:name=".signup.PopupActivity"
             android:theme="@android:style/Theme.Dialog" />

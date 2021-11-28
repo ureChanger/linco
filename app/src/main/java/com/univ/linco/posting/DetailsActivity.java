@@ -123,18 +123,17 @@ public class DetailsActivity extends AppCompatActivity {
 
         data = post;
 
-
-        if (data.getUser_id().equals("user_id")) {
+        if(data.getUser_id().equals("dummy")){
+            gallaryImage.setImageResource(data.getId_drawable());
+        }else {
             try {
+                Toast.makeText(getApplicationContext(), "내부 이미지 불러옵니다", Toast.LENGTH_SHORT).show();
                 gallaryImage.setImageURI(Uri.parse(data.getUri_image()));
             }catch(Exception e){
-            gallaryImage.setImageResource(R.drawable.drawable_error);
+                Toast.makeText(getApplicationContext(), "어이쿠 오류", Toast.LENGTH_SHORT).show();
+                gallaryImage.setImageResource(R.drawable.drawable_error);
             }
-        }else if(data.getUser_id().equals("dummy")){
-                gallaryImage.setImageResource(data.getId_drawable());
         }
-
-
 
         titleTv.setText(data.getTitle());
         mainTv.setText(data.getContent());

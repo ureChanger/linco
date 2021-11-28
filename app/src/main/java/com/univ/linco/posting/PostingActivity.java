@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.ImageDecoder;
 import android.net.Uri;
@@ -26,6 +27,9 @@ import com.univ.linco.mypage.MypageActivity;
 import com.univ.linco.posting.database.Post;
 import com.univ.linco.posting.database.PostClient;
 import com.univ.linco.posting.database.PostDao;
+import com.univ.linco.signup.database.User;
+import com.univ.linco.signup.database.UserClient;
+import com.univ.linco.signup.database.UserDao;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -50,6 +54,13 @@ public class PostingActivity extends AppCompatActivity {
         //데이터베이스
         PostDao db = PostClient.getInstance(getApplicationContext()).getAppDatabase()
                 .postDao();
+
+        UserDao userDao = UserClient.getInstance(getApplicationContext()).getAppDatabase()
+                .userDao();
+
+        SharedPreferences pref = getSharedPreferences("login_id", MODE_PRIVATE);
+        int idx_login = pref.getInt("login", 0);
+        User user_info = userDao.getAll().get(idx_login);
 
         //이미지 할당
         gallaryImage = findViewById(R.id.gallary_image);
@@ -148,7 +159,7 @@ public class PostingActivity extends AppCompatActivity {
             String date = sdf.format(dt);
 
             //내부 데이터베이스에 저장
-            db.insert(new Post(db.getAll().get(db.getAll().size()-1).getPost_id()+1,"user_id", keyword, title, main,
+            db.insert(new Post(db.getAll().get(db.getAll().size()-1).getPost_id()+1,user_info.getUser_id(), keyword, title, main,
                     Integer.parseInt(numEt.getText().toString()),
                     Integer.parseInt(peopleEt.getText().toString()),
                     url, date, seletedUri.toString(),

@@ -1,5 +1,6 @@
 package com.univ.linco.thumbnail;
 
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.util.Log;
 
@@ -13,20 +14,19 @@ import java.util.Comparator;
 public class Filtering{
     private ArrayList<ThumbnailItem> data;
     private ArrayList<ThumbnailItem> data_all = new ArrayList<>();
+    private String user_id;
 
     public Filtering(ArrayList<ThumbnailItem> data) {
-
         this.data = data;
         for (int i=0; i<data.size(); i++){
             data_all.add(data.get(i));
         }
     }
 
-    public ArrayList<ThumbnailItem> sortMine(){
+    public ArrayList<ThumbnailItem> sortMine(String user_id){
         ArrayList<ThumbnailItem> result = new ArrayList<ThumbnailItem>();
-
         for (int i=0; i < data.size(); i++){
-            if (data.get(i).getUser_id().equals("user_id")){
+            if (data.get(i).getUser_id().equals(user_id)){
                 result.add(data.get(i));
             }
         }

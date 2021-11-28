@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.univ.linco.mypage.MypageActivity;
@@ -22,6 +24,9 @@ import com.univ.linco.posting.database.Post;
 import com.univ.linco.posting.database.PostClient;
 import com.univ.linco.posting.database.PostDao;
 import com.univ.linco.posting.database.PostDummyData;
+import com.univ.linco.signup.database.User;
+import com.univ.linco.signup.database.UserClient;
+import com.univ.linco.signup.database.UserDao;
 import com.univ.linco.thumbnail.Filtering;
 import com.univ.linco.thumbnail.ThumbnailAdapter;
 import com.univ.linco.thumbnail.ThumbnailData;
@@ -33,6 +38,7 @@ import java.util.function.LongFunction;
 
 public class MainActivity extends AppCompatActivity {
     ImageButton btn_posting, btn_mypage;
+    TextView txt_name;
     Button btn_mine, btn_all, btn_popular;
     Intent intent;
     GridView gridView_thumbnail;
@@ -41,16 +47,24 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<ThumbnailItem> data;
     Filtering filter;
     ThumbnailAdapter adapter = new ThumbnailAdapter();
+    SharedPreferences pref;
+    int login_info;
+    User user_info;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         //데이터베이스
         PostDao db = PostClient.getInstance(getApplicationContext()).getAppDatabase()
                 .postDao();
+        UserDao userDao = UserClient.getInstance(getApplicationContext()).getAppDatabase()
+                .userDao();
+
+        pref = getSharedPreferences("login_id", MODE_PRIVATE);
+        login_info = pref.getInt("login", 0);
+        user_info = userDao.getAll().get(login_info);
 
         data_db = db.getAll();
 
@@ -66,6 +80,10 @@ public class MainActivity extends AppCompatActivity {
         btn_mine = findViewById(R.id.btn_mine);
         btn_all = findViewById(R.id.btn_all);
         btn_popular = findViewById(R.id.btn_popular);
+
+        //텍스트뷰 연결
+        txt_name = findViewById(R.id.txt_username);
+        txt_name.setText(user_info.getName()+"님");
 
         btn_posting.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         btn_mine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ArrayList<ThumbnailItem> data_mine = filter.sortMine();
+                ArrayList<ThumbnailItem> data_mine = filter.sortMine(user_info.getUser_id());
                 ThumbnailAdapter adapter_mine = new ThumbnailAdapter();
                 for (int i=0; i<data_mine.size(); i++){
                     adapter_mine.addItem(data_mine.get(i));

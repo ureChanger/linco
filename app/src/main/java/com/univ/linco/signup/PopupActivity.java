@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
@@ -17,15 +18,10 @@ import com.univ.linco.signin.SigninActivity;
 
 public class PopupActivity extends Activity {
 
-    CheckBox btn3;
-    CheckBox btn4;
-    CheckBox btn5;
-    CheckBox btn6;
-    CheckBox btn7;
-    CheckBox btn8;
-    CheckBox btn9;
-    CheckBox btn10;
-    CheckBox btn11;
+    CheckBox cb_camping, cb_beauty, cb_wealth, cb_sports,
+            cb_interior, cb_kids, cb_device, cb_book, cb_fashion;
+    String name, id, pw;
+    Button btn_submit;
     Button btn12;
     String keyword = "";
 
@@ -41,72 +37,17 @@ public class PopupActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_popup);
 
-        btn3 = (CheckBox) findViewById(R.id.btn3);
-        btn4 = (CheckBox) findViewById(R.id.btn4);
-        btn5 = (CheckBox) findViewById(R.id.btn5);
-        btn6 = (CheckBox) findViewById(R.id.btn6);
-        btn7 = (CheckBox) findViewById(R.id.btn7);
-        btn8 = (CheckBox) findViewById(R.id.btn8);
-        btn9 = (CheckBox) findViewById(R.id.btn9);
-        btn10 = (CheckBox) findViewById(R.id.btn10);
-        btn11 = (CheckBox) findViewById(R.id.btn11);
-        btn12 = (Button) findViewById(R.id.btn12);
+        cb_camping = (CheckBox) findViewById(R.id.cb_camping);
+        cb_beauty = (CheckBox) findViewById(R.id.cb_beauty);
+        cb_wealth = (CheckBox) findViewById(R.id.cb_wealth);
+        cb_sports = (CheckBox) findViewById(R.id.cb_sports);
+        cb_interior = (CheckBox) findViewById(R.id.cb_interior);
+        cb_kids = (CheckBox) findViewById(R.id.cb_kids);
+        cb_device = (CheckBox) findViewById(R.id.cb_device);
+        cb_book = (CheckBox) findViewById(R.id.cb_book);
+        cb_fashion = (CheckBox) findViewById(R.id.cb_fashion);
+        btn_submit = (Button) findViewById(R.id.btn_submit);
 
-
-
-        if (btn3.isChecked()){
-            keyword += "/캠핑";
-            editor.putBoolean("캠핑",true);
-            editor.commit();
-        }
-
-        if (btn4.isChecked()){
-            keyword += "/뷰티";
-            editor.putBoolean("뷰티",true);
-            editor.commit();
-        }
-
-        if (btn5.isChecked()){
-            keyword += "/건강";
-            editor.putBoolean("건강",true);
-            editor.commit();
-        }
-
-        if (btn6.isChecked()){
-            keyword += "/스포츠";
-            editor.putBoolean("스포츠",true);
-            editor.commit();
-        }
-
-        if (btn7.isChecked()){
-            keyword += "/인테리어";
-            editor.putBoolean("인테리어",true);
-            editor.commit();
-        }
-
-        if (btn8.isChecked()){
-            keyword += "/육아";
-            editor.putBoolean("육아",true);
-            editor.commit();
-        }
-
-        if (btn9.isChecked()){
-            keyword += "/전자기기";
-            editor.putBoolean("전자기기",true);
-            editor.commit();
-        }
-
-        if (btn10.isChecked()){
-            keyword += "/도서";
-            editor.putBoolean("도서",true);
-            editor.commit();
-        }
-
-        if (btn11.isChecked()){
-            keyword += "/패션";
-            editor.putBoolean("패션",true);
-            editor.commit();
-        }
     }
 
     @Override
@@ -119,16 +60,49 @@ public class PopupActivity extends Activity {
     //확인 버튼 클릭
     public void mOnClose(View v){
         //keyword = "/게임/육아"
+        if (cb_camping.isChecked()){
+            keyword += "/캠핑";
+        }
+
+        if (cb_beauty.isChecked()){
+            keyword += "/뷰티";
+        }
+
+        if (cb_wealth.isChecked()){
+            keyword += "/건강";
+        }
+
+        if (cb_sports.isChecked()){
+            keyword += "/스포츠";
+        }
+
+        if (cb_interior.isChecked()){
+            keyword += "/인테리어";
+        }
+
+        if (cb_kids.isChecked()){
+            keyword += "/육아";
+        }
+
+        if (cb_device.isChecked()){
+            keyword += "/전자기기";
+        }
+
+        if (cb_book.isChecked()){
+            keyword += "/도서";
+        }
+
+        if (cb_fashion.isChecked()){
+            keyword += "/패션";
+        }
+
         //데이터 전달하기
         Toast.makeText(PopupActivity.this, "Keyword 설정 완료", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+        intent.putExtra("from", "popup");
+        intent.putExtra("keyword", keyword);
 
-        intent.putExtra("keyword",keyword);
         startActivity(intent);
-
-
-        //액티비티(팝업) 닫기
-        finish();
     }
 
     @Override
