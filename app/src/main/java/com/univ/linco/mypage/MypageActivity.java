@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
@@ -23,6 +24,7 @@ import com.univ.linco.MainActivity;
 import com.univ.linco.R;
 import com.univ.linco.mypage.database.FilterClient;
 import com.univ.linco.mypage.database.FilterDao;
+import com.univ.linco.posting.DetailsActivity;
 import com.univ.linco.posting.database.Post;
 import com.univ.linco.posting.database.PostClient;
 import com.univ.linco.posting.database.PostDao;
@@ -226,6 +228,17 @@ public class MypageActivity extends AppCompatActivity {
         }
 
         gridView_mypost.setAdapter(adapter);
+
+        gridView_mypost.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent to_detail = new Intent(getApplicationContext(), DetailsActivity.class);
+                final ThumbnailItem item = (ThumbnailItem) adapter.getItem(position);
+                int id_item = item.getPost_id();
+                to_detail.putExtra("id", id_item);
+                startActivity(to_detail);
+            }
+        });
 
     }
 }
